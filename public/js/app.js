@@ -1963,6 +1963,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     };
   },
   mounted: function mounted() {
+    this.clear();
+
     if (_typeof(this.todoProp) == 'object') {
       this.form.id = this.todoProp.id;
       this.form.title = this.todoProp.title;
@@ -49203,7 +49205,8 @@ var render = function() {
               attrs: { type: "button" },
               on: {
                 click: function($event) {
-                  return _vm.showOrClose(0, "modalStoreTodo")
+                  _vm.todoList.todo = ""
+                  _vm.showOrClose(0, "modalStoreTodo")
                 }
               }
             },

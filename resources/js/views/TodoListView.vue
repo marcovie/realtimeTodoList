@@ -2,7 +2,7 @@
      <section class="todoapp">
             <header class="header col-12 mb-2 d-flex justify-content-between">
               <h1>Todo List</h1>
-              <span><button type='button' class='btn btn-primary' @click="showOrClose(0, 'modalStoreTodo')">Add a Todo Task</button></span>
+              <span><button type='button' class='btn btn-primary' @click="todoList.todo = '';showOrClose(0, 'modalStoreTodo')">Add a Todo Task</button></span>
             </header>
             <div class='col-lg-12'>
                 <SimpleModalComponent ref="modalStoreTodo" :refProp="'modalStoreTodo'" :heightProp="'60%'" :widthProp="'80%'">
@@ -38,7 +38,7 @@ export default {
   name: "TodoApp",
   mounted() {
     this.showTodoList();
-    
+
     window.Echo.channel("deleteDataTodoList").listen(".delete-todo-list", e => {
         this.todoList.items.splice(this.todoList.items.findIndex(obj => obj.id == e.dataTasks.id), 1);
     });

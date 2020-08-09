@@ -52,6 +52,7 @@ export default {
       }
     },
   mounted() {
+      this.clear();
       if(typeof(this.todoProp) == 'object') {
           this.form.id              = this.todoProp.id;
           this.form.title           = this.todoProp.title;
