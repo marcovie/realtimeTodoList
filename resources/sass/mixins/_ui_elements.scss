@@ -1,0 +1,25 @@
+@mixin internalCardHeader() {
+    padding: 0.75rem 1.25rem;
+    background-color: $lightGrey;
+    border-bottom: 1px solid $borderGrey;
+}
+
+@mixin editInput() {
+    text-align: left;
+    border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid $borderGrey;
+    width: 80%;
+    color: #818181;
+    padding: 5px !important;
+    margin-top: 25px;
+
+    &:hover {
+        background: $lightGrey !important;
+        transition: all 1s;
+        cursor: text;
+        border-radius: 5px 5px 0 0;
+    }
+}
