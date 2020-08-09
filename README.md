@@ -11,6 +11,7 @@
 <p>Vuejs</p>
 <p>Pusher</p>
 <p>Axios</p>
+<p>Font-awesome Free</p>
 
 ## Description
 
@@ -26,9 +27,12 @@
 <p>Step 3 - Make copy of the .env.example file and change the copy name to .env, open file and change settings required.</p>
 <p>Step 3 - Make database same name as you stated in .env file.</p>
 <p>Step 5 - Once .env file created you will need to run following commands that is between quotes:</p>
-<p>"php artisan key:generate" - (generates security key for laravel) </p>
-<p>"php artisan migrate --seed" - (creates all tables and data required) </p>
-<p>"php artisan passport install" - (passport is laravel plugin used to use the internal api, this will generate key needed to access internalApi) </p>
+```
+"php artisan key:generate" - (generates security key for laravel)
+"php artisan migrate --seed" - (creates all tables and data required)
+"php artisan passport install" - (passport is laravel plugin used to use the internal api, this will generate key needed to access internalApi)
+```
+<p>Step 6 - Will need to sign up for pusher to get auth codes that you will fill in, in the .env file. [Pusher](https://pusher.com/) </p>
 
 ## NB info if running on linux
 <p>You will have to give certain folder rights for project to work, please run commands between the quotes below:</p>
