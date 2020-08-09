@@ -38,7 +38,7 @@ export default {
   name: "TodoApp",
   mounted() {
     this.showTodoList();
-
+    
     window.Echo.channel("deleteDataTodoList").listen(".delete-todo-list", e => {
         this.todoList.items.splice(this.todoList.items.findIndex(obj => obj.id == e.dataTasks.id), 1);
     });
@@ -47,15 +47,19 @@ export default {
         let item            = this.todoList.items[this.todoList.items.findIndex(obj => obj.id == e.dataTasks.id)];
         item.title          = e.dataTasks.title;
         item.description    = e.dataTasks.description;
-        
-        this.$refs['simpleStoreUpdateTodoList'].clear();
-        this.showOrClose(1, 'modalStoreTodo');
+
+        if(this.$refs['simpleStoreUpdateTodoList']) {
+            this.$refs['simpleStoreUpdateTodoList'].clear();
+            this.showOrClose(1, 'modalStoreTodo');
+        }
     });
 
     window.Echo.channel("storeDataTodoList").listen(".store-todo-list", e => {
       this.todoList.items.push(e.dataTasks);
-      this.$refs['simpleStoreUpdateTodoList'].clear();
-      this.showOrClose(1, 'modalStoreTodo');
+      if(this.$refs['simpleStoreUpdateTodoList']) {
+          this.$refs['simpleStoreUpdateTodoList'].clear();
+          this.showOrClose(1, 'modalStoreTodo');
+      }
     });
   },
   data() {

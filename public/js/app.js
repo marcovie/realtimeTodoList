@@ -2194,16 +2194,20 @@ __webpack_require__.r(__webpack_exports__);
       item.title = e.dataTasks.title;
       item.description = e.dataTasks.description;
 
-      _this.$refs['simpleStoreUpdateTodoList'].clear();
+      if (_this.$refs['simpleStoreUpdateTodoList']) {
+        _this.$refs['simpleStoreUpdateTodoList'].clear();
 
-      _this.showOrClose(1, 'modalStoreTodo');
+        _this.showOrClose(1, 'modalStoreTodo');
+      }
     });
     window.Echo.channel("storeDataTodoList").listen(".store-todo-list", function (e) {
       _this.todoList.items.push(e.dataTasks);
 
-      _this.$refs['simpleStoreUpdateTodoList'].clear();
+      if (_this.$refs['simpleStoreUpdateTodoList']) {
+        _this.$refs['simpleStoreUpdateTodoList'].clear();
 
-      _this.showOrClose(1, 'modalStoreTodo');
+        _this.showOrClose(1, 'modalStoreTodo');
+      }
     });
   },
   data: function data() {
