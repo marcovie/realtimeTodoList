@@ -35,6 +35,7 @@
 
 <p>Step 6 - Will need to sign up for pusher to get auth codes that you will fill in, in the .env file. [Pusher](https://pusher.com/) </p>
 <p>Step 7 - Phpunit test, go into command prompt to root of project and type this into the command line: php vendor/phpunit/phpunit/phpunit  (this will run phpunit test for the internalApi)</p>
+<p>Step 8 - Once project and pusher is setup in apache please run in command line: npm run production</p>
 
 ## NB info if running on linux
 <p>You will have to give certain folder rights for project to work, please run commands between the quotes below:</p>
