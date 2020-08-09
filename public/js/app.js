@@ -1899,16 +1899,18 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_validationMixin_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/validationMixin.js */ "./resources/js/mixins/validationMixin.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -1939,6 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "storeTodo",
   mixins: [_mixins_validationMixin_js__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  props: ['todoProp'],
   data: function data() {
     return {
       formRules: {
@@ -1952,13 +1955,20 @@ __webpack_require__.r(__webpack_exports__);
         }
       },
       form: {
+        id: '',
         title: '',
         description: ''
       },
       valid: true
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    if (_typeof(this.todoProp) == 'object') {
+      this.form.id = this.todoProp.id;
+      this.form.title = this.todoProp.title;
+      this.form.description = this.todoProp.description;
+    }
+  },
   methods: {
     submitToParent: function submitToParent() {
       if (this.validatingForm()) {
@@ -2002,18 +2012,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import { mapGetters } from "vuex";
-// import todo from "../components/Todo";
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {// todo
-  },
+  mixins: [],
+  components: {},
   props: ['todoListProp'],
   name: "TodoList",
-  mounted: function mounted() {// this.$store.dispatch("GET_TODOS");
-  },
+  mounted: function mounted() {},
   methods: {
     deleteTodoList: function deleteTodoList(id) {
       this.$emit('callParentMethod', id);
+    },
+    editTodoList: function editTodoList(todo) {
+      this.$emit('callPopulateParentMethod', todo);
     }
   }
 });
@@ -2128,11 +2138,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_axiosPostMixin_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/axiosPostMixin.js */ "./resources/js/mixins/axiosPostMixin.js");
 /* harmony import */ var _mixins_axiosGetMixin_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/axiosGetMixin.js */ "./resources/js/mixins/axiosGetMixin.js");
 /* harmony import */ var _mixins_axiosDeleteMixin_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/axiosDeleteMixin.js */ "./resources/js/mixins/axiosDeleteMixin.js");
-/* harmony import */ var _mixins_helperMixin_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/helperMixin.js */ "./resources/js/mixins/helperMixin.js");
-/* harmony import */ var _mixins_validationMixin_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../mixins/validationMixin.js */ "./resources/js/mixins/validationMixin.js");
-/* harmony import */ var _components_ui_SimpleModalComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/ui/SimpleModalComponent.vue */ "./resources/js/components/ui/SimpleModalComponent.vue");
-/* harmony import */ var _components_forms_StoreTodoListComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/forms/StoreTodoListComponent.vue */ "./resources/js/components/forms/StoreTodoListComponent.vue");
-/* harmony import */ var _components_forms_TodoListComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/forms/TodoListComponent.vue */ "./resources/js/components/forms/TodoListComponent.vue");
+/* harmony import */ var _mixins_axiosPutMixin_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/axiosPutMixin.js */ "./resources/js/mixins/axiosPutMixin.js");
+/* harmony import */ var _mixins_helperMixin_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../mixins/helperMixin.js */ "./resources/js/mixins/helperMixin.js");
+/* harmony import */ var _mixins_validationMixin_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../mixins/validationMixin.js */ "./resources/js/mixins/validationMixin.js");
+/* harmony import */ var _components_ui_SimpleModalComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ui/SimpleModalComponent.vue */ "./resources/js/components/ui/SimpleModalComponent.vue");
+/* harmony import */ var _components_forms_StoreUpdateTodoListComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/forms/StoreUpdateTodoListComponent.vue */ "./resources/js/components/forms/StoreUpdateTodoListComponent.vue");
+/* harmony import */ var _components_forms_TodoListComponent_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/forms/TodoListComponent.vue */ "./resources/js/components/forms/TodoListComponent.vue");
 //
 //
 //
@@ -2149,6 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2158,11 +2170,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins_axiosPostMixin_js__WEBPACK_IMPORTED_MODULE_0__["default"], _mixins_axiosGetMixin_js__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_axiosDeleteMixin_js__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_helperMixin_js__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_validationMixin_js__WEBPACK_IMPORTED_MODULE_4__["default"]],
+  mixins: [_mixins_axiosPostMixin_js__WEBPACK_IMPORTED_MODULE_0__["default"], _mixins_axiosGetMixin_js__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_axiosDeleteMixin_js__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_axiosPutMixin_js__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_helperMixin_js__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_validationMixin_js__WEBPACK_IMPORTED_MODULE_5__["default"]],
   components: {
-    SimpleModalComponent: _components_ui_SimpleModalComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    storeTodoList: _components_forms_StoreTodoListComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    todoList: _components_forms_TodoListComponent_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    SimpleModalComponent: _components_ui_SimpleModalComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    storeUpdateTodoList: _components_forms_StoreUpdateTodoListComponent_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    todoList: _components_forms_TodoListComponent_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   name: "TodoApp",
   mounted: function mounted() {
@@ -2170,12 +2182,26 @@ __webpack_require__.r(__webpack_exports__);
 
     this.showTodoList();
     window.Echo.channel("deleteDataTodoList").listen(".delete-todo-list", function (e) {
-      _this.todoList.items.splice(_this.todoList.items.indexOf(e.dataTasks), 1);
+      _this.todoList.items.splice(_this.todoList.items.findIndex(function (obj) {
+        return obj.id == e.dataTasks.id;
+      }), 1);
+    });
+    window.Echo.channel("updateDataTodoList").listen(".update-todo-list", function (e) {
+      var item = _this.todoList.items[_this.todoList.items.findIndex(function (obj) {
+        return obj.id == e.dataTasks.id;
+      })];
+
+      item.title = e.dataTasks.title;
+      item.description = e.dataTasks.description;
+
+      _this.$refs['simpleStoreUpdateTodoList'].clear();
+
+      _this.showOrClose(1, 'modalStoreTodo');
     });
     window.Echo.channel("storeDataTodoList").listen(".store-todo-list", function (e) {
       _this.todoList.items.push(e.dataTasks);
 
-      _this.$refs['simpleStoreTodoList'].clear();
+      _this.$refs['simpleStoreUpdateTodoList'].clear();
 
       _this.showOrClose(1, 'modalStoreTodo');
     });
@@ -2186,7 +2212,8 @@ __webpack_require__.r(__webpack_exports__);
       params: [],
       todoList: {
         items: [],
-        definitions: []
+        definitions: [],
+        todo: ''
       }
     };
   },
@@ -2198,16 +2225,24 @@ __webpack_require__.r(__webpack_exports__);
       this.params['url'] = '/api/internalApi-Todo-List';
       this.axiosGetNormal(this.params, this.todoList);
     },
-    storeTodoList: function storeTodoList(form) {
+    storeUpdateTodoList: function storeUpdateTodoList(form) {
       this.errors = [];
       this.params = [];
       this.params['url'] = '/api/internalApi-Todo-List';
-      this.axiosPostNormal(this.params, form);
+
+      if (form.id != '') {
+        this.params['url'] = this.params['url'] + '/' + form.id;
+        this.axiosPutNormal(this.params, form);
+      } else this.axiosPostNormal(this.params, form);
     },
     deleteTodoList: function deleteTodoList(id) {
       this.errors = [];
       this.params['url'] = '/api/internalApi-Todo-List/' + id;
       this.axiosDeleteNormal(this.params);
+    },
+    populateTodoToEdit: function populateTodoToEdit(todo) {
+      this.todoList.todo = todo;
+      this.showOrClose(0, 'modalStoreTodo');
     }
   }
 });
@@ -48825,10 +48860,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=template&id=22cfb843&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=template&id=22cfb843& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -49020,11 +49055,28 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
+                      return _vm.editTodoList(todo)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "far fa-edit" }), _vm._v(" Edit")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
                       return _vm.deleteTodoList(todo.id)
                     }
                   }
                 },
-                [_vm._v("Complete Todo Task")]
+                [
+                  _c("i", { staticClass: "far fa-check-square" }),
+                  _vm._v(" Complete")
+                ]
               )
             ])
           ])
@@ -49173,11 +49225,11 @@ var render = function() {
           },
           [
             _c(
-              "storeTodoList",
+              "storeUpdateTodoList",
               {
-                ref: "simpleStoreTodoList",
-                attrs: { errors: this.errors },
-                on: { callParentMethod: _vm.storeTodoList }
+                ref: "simpleStoreUpdateTodoList",
+                attrs: { errors: this.errors, todoProp: this.todoList.todo },
+                on: { callParentMethod: _vm.storeUpdateTodoList }
               },
               [_vm._v("Add a Todo List")]
             )
@@ -49194,7 +49246,10 @@ var render = function() {
       [
         _c("todoList", {
           attrs: { todoListProp: this.todoList.items },
-          on: { callParentMethod: _vm.deleteTodoList }
+          on: {
+            callParentMethod: _vm.deleteTodoList,
+            callPopulateParentMethod: _vm.populateTodoToEdit
+          }
         })
       ],
       1
@@ -61480,17 +61535,17 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 /***/ }),
 
-/***/ "./resources/js/components/forms/StoreTodoListComponent.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/forms/StoreTodoListComponent.vue ***!
-  \******************************************************************/
+/***/ "./resources/js/components/forms/StoreUpdateTodoListComponent.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/forms/StoreUpdateTodoListComponent.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _StoreTodoListComponent_vue_vue_type_template_id_22cfb843___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreTodoListComponent.vue?vue&type=template&id=22cfb843& */ "./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=template&id=22cfb843&");
-/* harmony import */ var _StoreTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreTodoListComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _StoreUpdateTodoListComponent_vue_vue_type_template_id_f16b1d0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c& */ "./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c&");
+/* harmony import */ var _StoreUpdateTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreUpdateTodoListComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -61500,9 +61555,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _StoreTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _StoreTodoListComponent_vue_vue_type_template_id_22cfb843___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _StoreTodoListComponent_vue_vue_type_template_id_22cfb843___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _StoreUpdateTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StoreUpdateTodoListComponent_vue_vue_type_template_id_f16b1d0c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _StoreUpdateTodoListComponent_vue_vue_type_template_id_f16b1d0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -61512,38 +61567,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/forms/StoreTodoListComponent.vue"
+component.options.__file = "resources/js/components/forms/StoreUpdateTodoListComponent.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./StoreTodoListComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreUpdateTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./StoreUpdateTodoListComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreUpdateTodoListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=template&id=22cfb843&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=template&id=22cfb843& ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTodoListComponent_vue_vue_type_template_id_22cfb843___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./StoreTodoListComponent.vue?vue&type=template&id=22cfb843& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreTodoListComponent.vue?vue&type=template&id=22cfb843&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTodoListComponent_vue_vue_type_template_id_22cfb843___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreUpdateTodoListComponent_vue_vue_type_template_id_f16b1d0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/StoreUpdateTodoListComponent.vue?vue&type=template&id=f16b1d0c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreUpdateTodoListComponent_vue_vue_type_template_id_f16b1d0c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTodoListComponent_vue_vue_type_template_id_22cfb843___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreUpdateTodoListComponent_vue_vue_type_template_id_f16b1d0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -61916,6 +61971,55 @@ var axiosPostMixin = {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (axiosPostMixin);
+
+/***/ }),
+
+/***/ "./resources/js/mixins/axiosPutMixin.js":
+/*!**********************************************!*\
+  !*** ./resources/js/mixins/axiosPutMixin.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var axiosPutNormal = {
+  methods: {
+    axiosPutNormal: function axiosPutNormal(params, objectVariables) {
+      var _this = this;
+
+      axios.put(params.url, objectVariables, {
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        }
+      }).then(function (_ref) {
+        var data = _ref.data;
+
+        if (!data.successful) //Fail -> 0 -> display message
+          {
+            flash({
+              "message": data.message,
+              "type": "danger"
+            });
+          } else //success -> 1 -> call back function
+          {
+            flash({
+              "message": data.message,
+              "type": "success"
+            });
+            if (data.functionName && data.functionName != '') _this[data.functionName](data);
+          }
+      })["catch"](function (error) {
+        flash({
+          "message": error.response.data.message,
+          "type": "danger"
+        });
+        if (error != 'Error: Request failed with status code 500') _this.errors = error.response.data.errors;
+      });
+    }
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (axiosPutNormal);
 
 /***/ }),
 

@@ -10,6 +10,7 @@ use App\Helpers\Utility;
 use App\Models\DataTodoListModel;
 
 use App\Events\DataTodoListStore;
+use App\Events\DataTodoListUpdate;
 use App\Events\DataTodoListDelete;
 
 use DB;
@@ -60,8 +61,45 @@ class apiDataTodoListController extends Controller
                 return response()->json([
                         'successful'    => 1,
                         'message'       => 'Successfully completed.',
-                        'data'          => '1',
+                        'data'          => [],
                         'functionName'  => 'showTodoList'
+                    ]);
+            }
+
+            throw new \Exception('An error occured, please try again.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(array('successful' => 0, 'message' => 'An error occured, please try again.'));
+        }
+    }
+
+    public function update(Request $request) {
+        Utility::stripXSS($request);
+
+        $request->validate([
+          'id' => 'required',
+          'title' => 'required|min:3',
+          'description' => 'required|min:3',
+        ]);
+
+        try {
+            $user = auth('api')->user();
+            DB::beginTransaction();
+
+            $DataTodoListModel                       = DataTodoListModel::find($request->id);
+            $DataTodoListModel->title                = $request->title;
+            $DataTodoListModel->description          = $request->description;
+
+            $DataTodoListModelRs                     = $DataTodoListModel->save();
+
+            if($DataTodoListModelRs) {
+                broadcast(new DataTodoListUpdate($DataTodoListModel));
+                DB::commit();
+                return response()->json([
+                        'successful'    => 1,
+                        'message'       => 'Successfully updated.',
+                        'data'          => [],
+                        'functionName'  => ''
                     ]);
             }
 
@@ -96,10 +134,5 @@ class apiDataTodoListController extends Controller
             DB::rollback();
             return response()->json(array('successful' => 0, 'message' => 'An error occured, please try again.'.$e));
         }
-
-        // $task = Task::find($id);
-        // broadcast(new TaskRemoved($task));
-        // Task::destroy($id);
-        // return response()->json("deleted");
     }
 }

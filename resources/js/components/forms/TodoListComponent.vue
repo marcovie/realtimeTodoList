@@ -8,7 +8,7 @@
         </li>
         <li class="list-group-item row d-flex">
           <div class='col-12 d-flex justify-content-between'>
-            <span>{{todo.description}}</span><span><button type='button' class='btn btn-primary' @click="deleteTodoList(todo.id)">Complete Todo Task</button></span>
+            <span>{{todo.description}}</span><span><button type='button' class='btn btn-primary' @click="editTodoList(todo)"><i class="far fa-edit"></i> Edit</button>&nbsp;<button type='button' class='btn btn-primary' @click="deleteTodoList(todo.id)"><i class="far fa-check-square"></i> Complete</button></span>
           </div>
         </li>
       </ul>
@@ -16,20 +16,23 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
-// import todo from "../components/Todo";
+
 export default {
+        mixins: [],
         components: {
-            // todo
+
         },
         props: ['todoListProp'],
         name: "TodoList",
         mounted() {
-            // this.$store.dispatch("GET_TODOS");
+
         },
         methods: {
             deleteTodoList(id) {
                 this.$emit('callParentMethod', id);
+            },
+            editTodoList(todo) {
+                this.$emit('callPopulateParentMethod', todo);
             }
         }
     };

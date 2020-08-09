@@ -30,6 +30,7 @@ import validationMixin from '../../mixins/validationMixin.js';
 export default {
   name: "storeTodo",
   mixins: [validationMixin],
+  props: ['todoProp'],
   data() {
       return {
           formRules: {
@@ -43,6 +44,7 @@ export default {
               }
           },
           form: {
+                id: '',
                 title: '',
                 description: '',
             },
@@ -50,7 +52,11 @@ export default {
       }
     },
   mounted() {
-
+      if(typeof(this.todoProp) == 'object') {
+          this.form.id              = this.todoProp.id;
+          this.form.title           = this.todoProp.title;
+          this.form.description     = this.todoProp.description;
+      }
   },
   methods: {
     submitToParent () {
