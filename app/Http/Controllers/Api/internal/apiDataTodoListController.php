@@ -46,6 +46,7 @@ class apiDataTodoListController extends Controller
 
         try {
             $user = auth('api')->user();
+
             DB::beginTransaction();
 
             $newDataTodoListModel                       = new DataTodoListModel();
@@ -69,7 +70,7 @@ class apiDataTodoListController extends Controller
             throw new \Exception('An error occured, please try again.');
         } catch (\Exception $e) {
             DB::rollback();
-            return response()->json(array('successful' => 0, 'message' => 'An error occured, please try again.'));
+            return response()->json(array('successful' => 0, 'message' => 'An error occured, please try again.'.$e));
         }
     }
 

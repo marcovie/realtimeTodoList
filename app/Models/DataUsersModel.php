@@ -9,6 +9,8 @@ use Laravel\Passport\HasApiTokens;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\DataTodoListModel;
+
 class DataUsersModel extends Authenticatable
 {
     use SoftDeletes;
@@ -43,4 +45,9 @@ class DataUsersModel extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function todo()
+    {
+        return $this->hasMany(DataTodoListModel::class, 'created_by_user_id', 'id');
+    }
 }

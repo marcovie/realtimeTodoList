@@ -12,10 +12,11 @@
 <p>Pusher</p>
 <p>Axios</p>
 <p>Font-awesome Free</p>
+<p>PHPUnit Test</p>
 
 ## Description
 
-<p>Basic project where can currently create a user(anyone), then can create a Todo task that would show up in realtime on another browser. The task can also be deleted/completed (soft deleted) which then in realtime removes from all browsers.</p>
+<p>Project where you can currently create a user/register(anyone), then you can create a Todo task that would show up in realtime on multiple browser accross multiple users. The task can also be deleted/completed (soft deleted) which then in realtime removes it from all other users browsers.</p>
 
 ## Git Repository
 
@@ -33,6 +34,7 @@
 "php artisan passport install" - (passport is laravel plugin used to use the internal api, this will generate key needed to access internalApi)</p>
 
 <p>Step 6 - Will need to sign up for pusher to get auth codes that you will fill in, in the .env file. [Pusher](https://pusher.com/) </p>
+<p>Step 7 - Phpunit test, go into command prompt to root of project and type this into the command line: php vendor/phpunit/phpunit/phpunit  (this will run phpunit test for the internalApi)</p>
 
 ## NB info if running on linux
 <p>You will have to give certain folder rights for project to work, please run commands between the quotes below:</p>
