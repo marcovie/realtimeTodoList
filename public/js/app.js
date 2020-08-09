@@ -49031,6 +49031,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "container" },
     _vm._l(_vm.todoListProp, function(todo, index) {
       return _c("ul", { staticClass: "list-group mt-4" }, [
         _c(
@@ -49039,7 +49040,10 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "col-12 d-flex justify-content-between" },
+              {
+                staticClass:
+                  "col-lg-12 d-flex flex-wrap justify-content-between"
+              },
               [
                 _c("span", { staticClass: "mt-2" }, [
                   _c("b", [_vm._v("Title: ")]),
@@ -49051,41 +49055,47 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item row d-flex" }, [
-          _c("div", { staticClass: "col-12 d-flex justify-content-between" }, [
-            _c("span", [_vm._v(_vm._s(todo.description))]),
-            _c("span", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.editTodoList(todo)
+          _c(
+            "div",
+            {
+              staticClass: "col-lg-12 d-flex flex-wrap justify-content-between"
+            },
+            [
+              _c("span", [_vm._v(_vm._s(todo.description))]),
+              _c("span", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.editTodoList(todo)
+                      }
                     }
-                  }
-                },
-                [_c("i", { staticClass: "far fa-edit" }), _vm._v(" Edit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.deleteTodoList(todo.id)
+                  },
+                  [_c("i", { staticClass: "far fa-edit" }), _vm._v(" Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteTodoList(todo.id)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "far fa-check-square" }),
-                  _vm._v(" Complete")
-                ]
-              )
-            ])
-          ])
+                  },
+                  [
+                    _c("i", { staticClass: "far fa-check-square" }),
+                    _vm._v(" Complete")
+                  ]
+                )
+              ])
+            ]
+          )
         ])
       ])
     }),
