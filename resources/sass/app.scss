@@ -24,18 +24,19 @@ body {
     text-align: left;
 }
 
+/* -------------------------------- Background -------------------------------- */
 nav {
-    background: linear-gradient(90deg, rgba(48,110,157,1) 0%, rgba(0,204,255,1) 100%);
+    background: $background-gradient;
 }
 
-/* Cards */
+/* -------------------------------- Cards -------------------------------- */
 .cardHeaderSimple {
   @include internalCardHeader();
   background-color: $lightGrey;
   border-bottom: 1px solid $borderGrey;
 }
 
-/* Inputs */
+/* -------------------------------- Inputs -------------------------------- */
 .editInputSimple {
     @include editInput();
 }
